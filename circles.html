@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+<script type="text/javascript" src="paper-full.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.js"></script>
+
+<link rel="stylesheet" type="text/css" href="circles.css">
+<script type="text/paperscript" canvas="goat">
+
+
+
+var sound = new Howl({
+	src: ['sounds/bubbles.mp3']
+});
+
+
+var conf = new Howl({
+	src: ['sounds/confetti.mp3']
+});
+
+
+var pinw = new Howl({
+	src: ['sounds/pinwheel.mp3']
+});
+
+
+var cla= new Howl({
+	src:['sounds/clay.mp3']
+});
+var cor= new Howl({
+	src:['sounds/corona.mp3']
+});
+
+var spl= new Howl({
+	src:['sounds/splits.mp3']
+});
+
+var str= new Howl({
+	src:['sounds/strike.mp3']
+});
+
+var ufo= new Howl({
+	src:['sounds/ufo.mp3']
+});
+
+var glim= new Howl({
+	src:['sounds/glimmer.mp3']
+});
+
+var zag= new Howl({
+	src:['sounds/zig-zag.mp3']
+});
+
+
+var wip= new Howl({
+	src:['sounds/wipe.mp3']
+});
+
+var squi= new Howl({
+	src:['sounds/squiggle.mp3']
+});
+
+var prism= new Howl({
+	src:['sounds/prism-2.mp3']
+});
+
+
+
+var circleblue=[]
+var triangles=[];
+var poly=[];
+var circles=[];
+var rect=[];
+var circleo=[];
+var circleg=[];
+var circler=[];
+var rectr=[];
+var circleran=[];
+
+function onKeyDown(event){
+
+if(event.key=='d'|| event.key=='m'){
+var triangle = new Path.RegularPolygon(new Point(900,200), 3, 50);
+triangle.selected = true;
+triangles.push(triangle);
+sound.play();
+}
+
+else if(event.key=='a'|| event.key=='g'){
+var myCircle = new Path.Circle(new Point(400,400), 160);
+myCircle.fillColor = 'blue';
+circles.push(myCircle);
+cla.play();
+}
+
+else if(event.key=='r' || event.key=='p'){
+var myCircle = new Path.Circle(new Point(800,400), 200);
+myCircle.fillColor = 'orange';
+circleo.push(myCircle);
+cor.play();
+}
+else if(event.key=='b'|| event.key=='e'){
+var decagon = new Path.RegularPolygon(new Point(400, 170), 10, 50);
+decagon.selected = true;
+poly.push(decagon);
+conf.play();
+}
+
+else if(event.key=='c'|| event.key=='s'){
+var rectangle = new Rectangle(new Point(500, 100), new Point(650, 200));
+var path = new Path.Rectangle(rectangle);
+path.selected = true;
+rect.push(path);
+pinw.play();
+}
+else if(event.key=='i'|| event.key=='t'){
+var myCircle = new Path.Circle(new Point(900,700), 160);
+myCircle.fillColor = 'blue';
+circleg.push(myCircle);
+spl.play();
+}
+
+else if(event.key=='f'|| event.key=='n'){
+var myCircle = new Path.Circle(new Point(800,100), 260);
+myCircle.fillColor = 'red';
+circler.push(myCircle);
+str.play();
+}
+
+else if(event.key=='h'|| event.key=='v'){
+var myCircle = new Path.Circle(new Point(1300,100), 260);
+rectr.push(myCircle);
+ufo.play();
+}
+
+else if(event.key=='j'|| event.key=='z'){
+var rectangle = new Rectangle(new Point(1200, 500), new Point(1400, 700));
+var path = new Path.Rectangle(rectangle);
+path.selected = true;
+rect.push(path);
+glim.play();
+}
+
+else if(event.key=='k'|| event.key=='x'){
+var triangle = new Path.RegularPolygon(new Point(100,100), 3, 50);
+triangle.selected = true;
+triangles.push(triangle);
+zag.play();
+}
+else if(event.key=='l'||event.key=='w'){
+var myCircle = new Path.Circle(new Point(200,150), 200);
+myCircle.fillColor = Color.random();
+circleran.push(myCircle);
+wip.play();
+}
+else if(event.key=='o'||event.key=='y'){
+var myCircle = new Path.Circle(new Point(1200,500), 300);
+myCircle.fillColor = Color.random();
+circleran.push(myCircle);
+squi.play();
+}
+else if(event.key=='q'||event.key=='u'){
+var myCircle = new Path.Circle(new Point(500,100), 200);
+myCircle.fillColor = '#41f1f4';
+circleblue.push(myCircle);
+prism.play();
+}
+
+}
+
+
+function onFrame(event){
+	for(var i=0;i<triangles.length;i++){
+	triangles[i].strokeColor="black";
+	triangles[i].rotate(10);
+	triangles[i].scale(1.1);
+}
+
+	for(var i=0;i<rectr.length;i++){
+	rectr[i].fillColor="pink";
+	rectr[i].rotate(10);
+	rectr[i].scale(0.8);
+}
+for(var i=0;i<circleblue.length;i++){
+	circleblue[i].fillColor="#41f1f4";
+	circleblue[i].scale(0.8);
+}
+
+	for(var i=0;i<circler.length;i++){
+	circler[i].fillColor="red";
+	circler[i].scale(0.9);
+}
+
+	for(var i=0;i<circleg.length;i++){
+	circleg[i].fillColor="green";
+	circleg[i].scale(0.9);
+}
+
+	for(var i=0;i<circleo.length;i++){
+	circleo[i].fillColor="orange";
+	circleo[i].scale(0.9);
+}
+	for(var i=0;i<circles.length;i++){
+	circles[i].fillColor="blue";
+	circles[i].scale(0.9);
+}
+	for(var i=0;i<poly.length;i++){
+	poly[i].strokeColor="blue";
+	poly[i].scale(1.1);
+}
+	for(var i=0;i<rect.length;i++){
+	rect[i].strokeColor="red";
+	rect[i].scale(1.1);
+}
+	for(var i=0;i<circleran.length;i++){
+	circleran[i].fillColor=Color.random();
+	circleran[i].scale(0.9);
+}		
+
+}
+
+
+
+</script>
+</head>
+<body>
+	<div>
+<canvas id="goat" resize></canvas>
+<!--
+	
+function onKeyDown(event){
+var max=new Point(view.size.width,view.size.height);
+var sc= Point.random();
+var actual=sc*max;
+var actcir=new Path.Circle(actual,60);
+actcir.fillColor="blue";
+circles.push(actcir);
+}
+
+function onFrame(event){
+	for(var i=0;i<circles.length;i++){
+	circles[i].fillColor.hue+=1;
+	circles[i].scale(0.9);
+}
+}
+	var path = new Path();
+	// Give the stroke a color
+	path.strokeColor = 'blue';
+	var start = new Point(400, 400);
+	// Move to start and draw a line from there
+	path.moveTo(start);
+	// Note the plus operator on Point objects.
+	// PaperScript does that for us, and much more!
+	path.lineTo(start + [ 300, -150 ]);
+	var circlegoat=new Path.Circle(new Point(300,300),100);
+	circlegoat.fillColor="blue";
+	
+	-->
+</div>
+</body>
+</html>
